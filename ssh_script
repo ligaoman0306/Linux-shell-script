@@ -1,0 +1,12 @@
+#!/usr/bin/expect -f
+set date [lindex $argv 0 ]		#给变量date导入参数
+spawn ssh lgm@192.168.1.10
+expect {
+"yes/no" { send "yes\r"; exp_continue}
+"password:" { send "123456\r"}
+}
+expect "/WLWJFX5_data/wjfa5"
+send "cd /WLWJFX5_data/wjfa5/cmsz/scripts/monitor/cdr_performance/result\r"
+expect "/WLWJFX5_data/wjfa5/cmsz/scripts/monitor/cdr_performance/result"
+send "ls *`date -d yesterday +%Y%m%d`*|xargs cat\r"		#查看昨天的文件
+interact
