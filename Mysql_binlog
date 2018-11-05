@@ -1,0 +1,31 @@
+mysql参数max_binlog_cache_size
+2017年04月27日 18:27:06 laiyijian 阅读数：3074更多
+个人分类： mysql
+mysql参数max_binlog_cache_size
+
+max_binlog_cache_size 表示的是binlog 能够使用的最大cache 内存大小
+
+可以通过set global max_binlog_cache_size=1048576(字节) 或者直接改配置文件,默认是1M
+
+通过show global status like 'bin%';查看binlog_cache_size的使用情况
+
+
+
+Binlog_cache_disk_use表示因为我们binlog_cache_size设计的内存不足导致缓存二进制日志用到了临时文件的次数
+Binlog_cache_use  表示 用binlog_cache_size缓存的次数
+
+当对应的Binlog_cache_disk_use 值比较大的时候 我们可以考虑适当的调高 binlog_cache_size 对应的值
+
+
+MySQL设定MAX_BINLOG_SIZE
+1.修改/etc/my.cnf
+
+添加max_binlog_size=512m
+
+
+
+2.在线修改
+
+SET @set_value = 1073741824;
+SET @@global.max_binlog_size = @set_value;
+SELECT @@global.max_binlog_size;
