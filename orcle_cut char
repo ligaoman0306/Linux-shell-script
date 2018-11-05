@@ -1,0 +1,18 @@
+substr（字符串,n,m)
+:从该字符串的第n个字符开始截取，截取之后的m个字符为止。
+
+instr(字段名, 匹配的字符, 从字段值中第几个字符开始匹配, 第几次匹配)
+:为确定匹配的字符在字符串中的第几个字符位置，得到的是数字。
+
+substr(字段名, instr(字段名,匹配的字符,从字段值中第几个字符开始匹配,第几次匹配)+x,截取y个字符)
+x ：调整截取字符的起始位置（可以正负）
+y: 可以使由俩个instr指定的字符之间的字符串数量
+
+
+select to_char(substr(bodyxml,instr(bodyxml,'<OprCode>',1,1)+9,2)) oprcode from inter.pboss_order_all
+ where oprseq in ('0600BIP2B98920180829030153930683');
+ 
+ 
+select to_char(substr(bossxml,instr(bossxml,'<RspDesc>',1,1)+9, instr(bossxml,'</RspDesc>',1,1)-instr(bossxml,'<RspDesc>',1,1)-9)) Rspdesc
+from inter.pboss_order_all
+where oprseq in ('0600BIP2B98920180830110509868560');
