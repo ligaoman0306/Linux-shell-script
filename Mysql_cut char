@@ -1,0 +1,26 @@
+mysql初始化命令
+# mysql_install_ db --user=mysql --datadir/mysql/
+
+Mysql中字符串截取：
+1、substring(str,index,len)
+str:字符串
+index：第几个字符开始
+len:截取的长度、
+2、substring_index(str,delim,count)
+str是要截取的字符串，delim是截取的字段 count是从哪里开始截取(为0则是左边第0个开始，1位左边开始第
+
+一个选取左边的，-1从右边第一个开始选取右边的
+3、subdate(date,day)截取时间，时间减去后面的day
+subdate("2018-08-15",2)
+:2018-08-13
+4、subtime(expr1,expr2)--是两个时间相减
+
+
+
+
+
+
+
+
+
+
