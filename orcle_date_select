@@ -1,0 +1,5 @@
+select region_code,count(region_code) from inter.cbbs_user_status_order
+where START_TIME between to_date('20180828000000','yyyymmddhh24miss') and to_date('20180829235959','yyyymmddhh24miss')
+group by region_code;
+
+
